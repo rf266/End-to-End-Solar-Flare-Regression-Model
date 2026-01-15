@@ -1,9 +1,10 @@
 import streamlit as st
 import requests
+import pandas as pd
 
 st.title("Solar Flare Level Predictor")
 
-st.subheader("Enter information about a sunspot to classify the expected number of solar flares of each type: common, moderate or severe")
+st.subheader("Enter information about a sunspot to classify the expected number (mean/lambda) of solar flares of each type in a 24H period: common, moderate or severe")
 
 zurich=st.selectbox("Modified Zurich class", ["B", "C", "D", "E", "F", "H"])
 spot_size=st.selectbox("Largest spot size", ["X","R","S","A","H","K"])
@@ -130,8 +131,8 @@ elif spot_dist=="O":
     spot_dist_o = True
     spot_dist_x = False
 
-input= {
-        "input": {"activity": activity,  
+inputs= {
+        "activity": activity,  
         "evolution": evol,
         "previous 24 hour flare activity": prev24,
         "historically-complex":hist,
@@ -154,19 +155,20 @@ input= {
         "spot distribution_I": spot_dist_i,
         "spot distribution_O": spot_dist_o,
         "spot distribution_X": spot_dist_x
-        }}
+        }
 
 if submit:
-    req = requests.post("http://127.0.0.1:8000/predict", json=input)
-    st.write(req.json()["input"]["common flares"])
+    req = requests.post("http://127.0.0.1:8000/", json=inputs)
+    preds = req.json()
+    commonf = preds["common flares"]["0"]
+    moderate = preds["moderate flares"]["0"]
+    severe = preds["severe flares"]["0"]
 
+st.subheader("Predictions - Expected (Mean) number of solar flares in a 24 hour period")
 
-
-st.subheader("Predictions")
-
-st.write("Common Flares: ")
-st.write("Moderate Flares: ")
-st.write("Severe Flares: ")
+st.write(f"Common Flares: {commonf:.5f}") 
+st.write(f"Moderate Flares: {moderate:.5f}")
+st.write(f"Severe Flares: {severe:.5f}")
 
 st.write("Variable information: UCI Machine Learning Repository - https://archive.ics.uci.edu/dataset/89/solar+flare")
 

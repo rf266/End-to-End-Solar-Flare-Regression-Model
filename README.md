@@ -13,7 +13,7 @@ The final model uses **Poisson Regression** to predict values for each flare cla
 - **Streamlit** UI/frontend
 - **FastAPI, Pydantic, Uvicorn and Requests** backend 
 - **Vercel** Deployment 
-
+ 
 (My original intentions were to containerise the model using *Docker*, as this would be an added learning opportunity. However, due to my system's repeated compatibility issues with Docker, I had to skip this step. )
 
 # Model Development

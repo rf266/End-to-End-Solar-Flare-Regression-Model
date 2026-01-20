@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
-
+  
 st.title("Solar Flare Level Predictor")
 
 st.subheader("Enter information about a sunspot to classify the expected number (mean/lambda) of solar flares of each type in a 24H period: common, moderate or severe")

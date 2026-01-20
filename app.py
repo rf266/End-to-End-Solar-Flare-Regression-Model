@@ -39,4 +39,4 @@ def predict(data:Input):
     prediction = pd.DataFrame(model.predict(newdf), columns=["common flares", "moderate flares", "severe flares"])
     print(prediction) #printing to console
     return prediction
-    
+     

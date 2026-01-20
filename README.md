@@ -2,8 +2,6 @@
 
 **The purpose of this model is to predict the expected/mean number of solar flares of common, moderate and severe intensity in a 24H period, from data about the sunspot being studied.**
 
-*Throughout the process, I have consulted a wide range of online resources and AI tools as most of the concepts covered were new to me, and I used these tools to investigate the challenges I faced, as well as to seek clarity about what certain results truly mean.*
-
 The final model uses **Poisson Regression** to predict values for each flare class. 
 
 # Tech stack: 
@@ -15,6 +13,8 @@ The final model uses **Poisson Regression** to predict values for each flare cla
 - **Vercel** Deployment 
  
 (My original intentions were to containerise the model using *Docker*, as this would be an added learning opportunity. However, due to my system's repeated compatibility issues with Docker, I had to skip this step. )
+
+*Throughout the process, I have consulted a wide range of online resources and AI tools as most of the concepts covered were new to me, and I used these tools to investigate the challenges I faced, as well as to seek clarity about what certain results truly mean.*
 
 # Model Development
 

@@ -160,15 +160,15 @@ inputs= {
 if submit:
     req = requests.post("http://127.0.0.1:8000/", json=inputs)
     preds = req.json()
-    commonf = preds["common flares"]["0"]
-    moderate = preds["moderate flares"]["0"]
-    severe = preds["severe flares"]["0"]
+    commonf = preds["common flares"]['0']
+    moderate = preds["moderate flares"]['0']
+    severe = preds["severe flares"]['0']
 
-st.subheader("Predictions - Expected (Mean) number of solar flares in a 24 hour period")
+    st.subheader("Predictions - Expected (Mean) number of solar flares in a 24 hour period")
 
-st.write(f"Common Flares: {commonf:.5f}") 
-st.write(f"Moderate Flares: {moderate:.5f}")
-st.write(f"Severe Flares: {severe:.5f}")
+    st.write(f"Common Flares: {commonf:.5f}") 
+    st.write(f"Moderate Flares: {moderate:.5f}")
+    st.write(f"Severe Flares: {severe:.5f}")
 
-st.write("Variable information: UCI Machine Learning Repository - https://archive.ics.uci.edu/dataset/89/solar+flare")
+    st.write("Variable information: UCI Machine Learning Repository - https://archive.ics.uci.edu/dataset/89/solar+flare")
 

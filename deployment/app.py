@@ -37,6 +37,6 @@ def predict(data:Input):
     newdata = data.model_dump(by_alias=True)
     newdf = pd.DataFrame([newdata]) 
     prediction = pd.DataFrame(model.predict(newdf), columns=["common flares", "moderate flares", "severe flares"])
-    print(prediction) #printing to console
-    return prediction
+
+    return prediction.to_dict()
      

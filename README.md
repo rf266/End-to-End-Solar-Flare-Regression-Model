@@ -10,7 +10,7 @@ The final model uses **Poisson Regression** to predict values for each flare cla
 - **Joblib** model saving/pickling
 - **Streamlit** UI/frontend
 - **FastAPI, Pydantic, Uvicorn and Requests** backend 
-- **Vercel** Deployment 
+- **Render** Deployment 
  
 (My original intentions were to containerise the model using *Docker*, as this would be an added learning opportunity. However, due to my system's repeated compatibility issues with Docker, I had to skip this step. )
 
@@ -36,6 +36,9 @@ I used a *POST* request to send data from the frontend to the backend for the mo
 
 This process exposed a flaw in the model, where negative answers were being returned for the number of solar flare counts, which is not possible. I then came across the use of the PoissonRegressor, specially used for count data, which meant that I had to revert to the EDA. After tuning and testing the model, the scores were in the same range as the previous three, which is why I decided to go with this in the end. After using this model, the negative scores were no longer there (as a result of the log link function incorporated into the Poisson model), and I proceeded with this. 
 
+- **Render deployment**
+
+The model is deployed on Render, with two Webservices for the front and backend. Some challenges were faced in the formatting of return values, as well as the commands to be entered prior to deployment. 
 
 # Evaluation 
 
@@ -47,6 +50,7 @@ The model itself returns float values for the expected/mean number of solar flar
 
 Zurich classifications for sunspots include the classes A, B, C, D, E, F and H. However, the training data did not have any sunspots of class A, which meant that I had to leave it out. Moreover, the class imbalance in the dataset could be handled by different approaches like trying different sampling methods. 
 
+Containerisation through Docker or other platforms would have made deployment a smoother process, however, I had to work without it due to compatibility issues. 
 
 ### Key online sources and references which were especially helpful throughout - not an exhaustive list: 
 https://www.youtube.com/watch?v=luJ64trcCwc - Reference to overall structure of an end to end ML project 
@@ -125,3 +129,7 @@ https://leapcell.io/blog/how-to-use-python-requests-for-post-requests - Interpre
 https://stackoverflow.com/questions/79870602/docker-workaround-for-macos-12 - Question I posted about Docker workarounds
 
 https://www.geeksforgeeks.org/machine-learning/how-to-handle-imbalanced-classes-in-machine-learning/ - Strategies to fix class imbalance
+
+https://stackoverflow.com/questions/78547476/no-open-ports-detected-on-0-0-0-0-when-hosting-fastapi-server-on-render - Render deployment 
+
+https://www.youtube.com/watch?v=nOP8khZhjhk - Render deployment 

@@ -4,6 +4,8 @@
 
 The final model uses **Poisson Regression** to predict values for each flare class. 
 
+Link: https://solar-flare-model.onrender.com/
+
 # Tech stack: 
 
 - **Pandas and Scikit-learn** for model building and Exploratory Data Analysis (Matplotlib and Seaborn were also used for support in visualisation but are omitted from the final notebook)

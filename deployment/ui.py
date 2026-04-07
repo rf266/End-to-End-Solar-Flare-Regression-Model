@@ -122,8 +122,8 @@ elif spot_dist=="C":
     spot_dist_x = False
 elif spot_dist=="I":
     spot_dist_c = False
-    spot_dist_i = False
-    spot_dist_o = True
+    spot_dist_i = True
+    spot_dist_o = False
     spot_dist_x = False
 elif spot_dist=="O":
     spot_dist_c = False
